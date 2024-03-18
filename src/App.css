@@ -1,0 +1,71 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "League Spartan", sans-serif;
+  /* font-family: "Antonio", sans-serif; */
+}
+
+body {
+  background-color: #070724;
+  background-image: url('assets/background-stars.svg');
+  
+}
+
+:root {
+  --Mercury: #419EBB;
+  --Venus: #EDA249;
+  --Earth: #6D2ED5;
+  --Mars: #D14C32;
+  --Jupiter: #D83A34;
+  --Saturn: #CD5120;
+  --Uranus:#1EC1A2;
+  --Neptune: #2D68F0;
+
+}
+
+h1, h2 {
+  font-family: "Antonio", sans-serif;
+}
+
+p {
+  font-size: 11px;
+  font-weight: 300;
+  line-height: 2;
+  font-family: "League Spartan", sans-serif;
+}
+
+
+.p1 {
+  background-color: #419EBB;
+}
+
+.p2 {
+  background-color: #EDA249;
+}
+
+.p3 {
+  background-color: #6D2ED5;
+}
+
+.p4 {
+  background-color: #D14C32;
+}
+
+.p5 {
+  background-color: #D83A34;
+}
+
+.p6 {
+  background-color: #CD5120;
+}
+
+.p7 {
+  background-color: #1EC1A2;
+}
+
+.p8 {
+  background-color: #2D68F0;
+}
