@@ -10,7 +10,7 @@ const Mercury = () => {
 
   const context = useContext(GlobalState);
   if (!context) return null;
-  const { data } = context;
+  // const { data } = context;
 
 
 
