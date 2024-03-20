@@ -12,7 +12,7 @@ import Jupiter from './Pages/Jupiter'
 import Saturn from './Pages/Saturn'
 import Uranus from './Pages/Uranus'
 import Neptune from './Pages/Neptune'
-
+import { btnsData } from './btnsData'
 
 
 
@@ -43,29 +43,31 @@ export interface IData {
 }
 
 
+export interface IBtnData {
+  id: number;
+  name: string;
+};
+
 
 
 type GlobalStateType = {
   data: IData[];
-  // setPlanetName: React.Dispatch<React.SetStateAction<undefined>>;
   getName: (name: string) => void;
   palnetName: string;
-  // activeNav: boolean;
+  getOverview: (pageName: string, btnName: string) => void;
+  overview: boolean;
+  activeBtn: string;
+  btnsData: IBtnData[];
 }
 
 export const GlobalState = createContext<GlobalStateType | null>(null);
 
 
-
-
-
-
-
-
-
 function App() {
   const [palnetName, setPlanetName] = useState('');
-  // const [activeNav, setActiveNav] = useState(false)
+  const [overview, setOverview] = useState(false)
+  const [activeBtn, setActiveBtn] = useState('')
+
 
   const getName = (name: string) => {
     setPlanetName(name)
@@ -73,9 +75,13 @@ function App() {
 
 
 
+  const getOverview = (pageName: string, btnName: string) => {
+    setOverview(!overview)
 
-
-
+    if (pageName === palnetName) {
+      setActiveBtn(btnName)
+    }
+  }
 
   const router = createBrowserRouter((
     createRoutesFromElements(
@@ -98,22 +104,19 @@ function App() {
 
   return (
 
-    <div
-      // style={{backgroundImage: '/assets/background-stars.svg'}}
-      className='App text-white '>
+    <div className='App text-white '>
       <GlobalState.Provider value={{
         data,
-        // filtredData,
         getName,
         palnetName,
-        // activeNav
+        getOverview,
+        overview,
+        // changeBtn
+        activeBtn,
+        btnsData
       }}>
         <RouterProvider router={router}></RouterProvider>
       </GlobalState.Provider>
-
-
-
-
     </div>
   )
 }

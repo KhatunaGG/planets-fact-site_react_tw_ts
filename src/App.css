@@ -35,10 +35,11 @@ p {
   font-weight: 300;
   line-height: 2;
   font-family: "League Spartan", sans-serif;
+  
 }
 
 
-.p1 {
+/* .p1 {
   background-color: #419EBB;
 }
 
@@ -68,4 +69,48 @@ p {
 
 .p8 {
   background-color: #2D68F0;
+} */
+
+
+
+
+
+
+
+
+
+.p-mercury {
+  background-color: #419EBB;
+}
+
+.p-venus {
+  background-color: #EDA249;
+}
+
+.p-earth {
+  background-color: #6D2ED5;
+}
+
+.p-mars {
+  background-color: #D14C32;
+}
+
+.p-jupiter {
+  background-color: #D83A34;
+}
+
+.p-saturn {
+  background-color: #CD5120;
+}
+
+.p-uranus {
+  background-color: #1EC1A2;
+}
+
+.p-neptune {
+  background-color: #2D68F0;
+}
+
+.transparent{
+  background: transparent;
 }
