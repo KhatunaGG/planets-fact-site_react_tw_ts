@@ -7,7 +7,7 @@ const Root = () => {
 
   const context = useContext(GlobalState);
   if (!context) return null;
-  const { data, getName, palnetName } = context;
+  const { data, getName, planetName } = context;
 
 
   return (
@@ -51,7 +51,7 @@ const Root = () => {
                 className=' flex flex-col '>
                 <button className=' uppercase text-[11px] font-bold tracking-[1px] leading-[1.93px]  
                 lg:pb-[35px] md:pb-[17px] lg:pt-[40px]'>{item.name}</button>
-                {palnetName === item.name && (
+                {planetName === item.name && (
                   <span className={`p-${item.name.toLowerCase()} w-full h-[4px] `}></span>
                 )}
               </div>

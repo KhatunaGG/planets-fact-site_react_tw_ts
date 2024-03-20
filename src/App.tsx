@@ -13,47 +13,14 @@ import Saturn from './Pages/Saturn'
 import Uranus from './Pages/Uranus'
 import Neptune from './Pages/Neptune'
 import { btnsData } from './btnsData'
-
-
-
-
-export interface IData {
-  name: string;
-  overview: {
-    content: string;
-    source: string;
-  };
-  structure: {
-    content: string;
-    source: string;
-  };
-  geology: {
-    content: string;
-    source: string;
-  };
-  rotation: string;
-  revolution: string;
-  radius: string;
-  temperature: string;
-  images: {
-    planet: string;
-    internal: string;
-    geology: string;
-  };
-}
-
-
-export interface IBtnData {
-  id: number;
-  name: string;
-};
-
+import { IData } from './interfaces'
+import { IBtnData } from './interfaces'
 
 
 type GlobalStateType = {
   data: IData[];
   getName: (name: string) => void;
-  palnetName: string;
+  planetName: string;
   getOverview: (pageName: string, btnName: string) => void;
   overview: boolean;
   activeBtn: string;
@@ -64,7 +31,7 @@ export const GlobalState = createContext<GlobalStateType | null>(null);
 
 
 function App() {
-  const [palnetName, setPlanetName] = useState('');
+  const [planetName, setPlanetName] = useState('');
   const [overview, setOverview] = useState(false)
   const [activeBtn, setActiveBtn] = useState('')
 
@@ -78,7 +45,7 @@ function App() {
   const getOverview = (pageName: string, btnName: string) => {
     setOverview(!overview)
 
-    if (pageName === palnetName) {
+    if (pageName === planetName) {
       setActiveBtn(btnName)
     }
   }
@@ -108,7 +75,7 @@ function App() {
       <GlobalState.Provider value={{
         data,
         getName,
-        palnetName,
+        planetName,
         getOverview,
         overview,
         // changeBtn

@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { GlobalState } from "../App";
-
 import Buttons from "./Buttons";
 
 
@@ -10,9 +9,9 @@ const Planet = () => {
 
     const context = useContext(GlobalState);
     if (!context) return null;
-    const { data, palnetName, getOverview, activeBtn, btnsData } = context;
+    const { data, planetName, getOverview, activeBtn, btnsData } = context;
 
-    const newData = data.filter((item) => item.name === palnetName)
+    const newData = data.filter((item) => item.name === planetName)
 
 
 
