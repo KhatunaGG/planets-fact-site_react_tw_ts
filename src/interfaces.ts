@@ -39,4 +39,6 @@ export type ButtonsProps = {
     activeBtn: string;
     btnName: string;
     id: number;
+
+    statuse?: string;
 }

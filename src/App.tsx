@@ -25,6 +25,11 @@ type GlobalStateType = {
   overview: boolean;
   activeBtn: string;
   btnsData: IBtnData[];
+  setSideBar: (value: boolean) => void;
+  sideBar: boolean;
+
+
+
 }
 
 export const GlobalState = createContext<GlobalStateType | null>(null);
@@ -35,21 +40,32 @@ function App() {
   const [overview, setOverview] = useState(false)
   const [activeBtn, setActiveBtn] = useState('')
 
+  
+
+  const [sideBar, setSideBar] = useState(false)
+ 
+
+
 
   const getName = (name: string) => {
     setPlanetName(name)
+    setSideBar(!sideBar)
   }
 
 
 
   const getOverview = (pageName: string, btnName: string) => {
     setOverview(!overview)
-
     if (pageName === planetName) {
       setActiveBtn(btnName)
     }
   }
 
+
+
+
+
+  
   const router = createBrowserRouter((
     createRoutesFromElements(
       <Route path='/' element={<Root />} >
@@ -62,7 +78,6 @@ function App() {
         <Route path={'/saturn'} element={<Saturn />} />
         <Route path={'/uranus'} element={<Uranus />} />
         <Route path={'/neptune'} element={<Neptune />} />
-
       </Route>
     )
 
@@ -78,9 +93,10 @@ function App() {
         planetName,
         getOverview,
         overview,
-        // changeBtn
         activeBtn,
-        btnsData
+        btnsData,
+        setSideBar,
+        sideBar,
       }}>
         <RouterProvider router={router}></RouterProvider>
       </GlobalState.Provider>
