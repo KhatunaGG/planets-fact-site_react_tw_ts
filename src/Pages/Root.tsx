@@ -7,7 +7,7 @@ const Root = () => {
 
   const context = useContext(GlobalState);
   if (!context) return null;
-  const { data, getName, planetName, setSideBar, sideBar } = context;
+  const { data, getName, planetName, sideBar, toggleSidebar } = context;
 
 
   return (
@@ -15,14 +15,19 @@ const Root = () => {
 
       <div className="header relative w-full border-b border-[#38384F] lg:flex lg:flex-row lg:justify-between lg:items-center" >
         <div className='flex flex-row justify-between items-center px-6 py-4 lg:pt-4 lg:pl-8 lg:pr-10'>
-          <h2 className='uppercase text-[28px] tracking-[-1.05px] md:w-full md:text-center md:pb-[25px] lg:pb-0'>The Planets</h2>
+          <Link to={'/'}>
+            <h2
+              className='uppercase text-[28px] tracking-[-1.05px] md:w-full md:text-center md:pb-[25px] lg:pb-0'>The Planets</h2>
+          </Link>
+
           <div
-            onClick={() => setSideBar(!sideBar)}
+            onClick={() => toggleSidebar()}
             className='md:hidden lg:hidden'>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="17"><g fill="#FFF" fill-rule="evenodd">
               <path d="M0 0h24v3H0zM0 7h24v3H0zM0 14h24v3H0z" /></g></svg>
           </div>
         </div>
+
         <div className='hidden md:px-[51px] list-none text-[11px] tracking-[1px] leading-[2.27] 
             md:flex flex-row justify-between items-center lg:gap-[33px] lg:visible'>
           {data.map((item, i) => (
@@ -32,9 +37,9 @@ const Root = () => {
                 className=' flex flex-col '>
                 <button className=' uppercase text-[11px] font-bold tracking-[1px] leading-[1.93]  
                 lg:pb-[35px] md:pb-[17px] lg:pt-[40px]'>{item.name}</button>
-                {planetName === item.name && (
+                {planetName !== '' && planetName === item.name ? (
                   <span className={`p-${item.name.toLowerCase()} w-full h-[4px] `}></span>
-                )}
+                ) : <span className={`transparent w-full h-[4px] `}></span>}
               </div>
             </Link>
           ))}
@@ -52,16 +57,9 @@ const Root = () => {
                   <div
                     onClick={() => getName(item.name)}
                     className='sidebarBtn w-full flex flex-row items-center px-6 pb-4 '>
-
                     <div className='w-full flex flex-row gap-[25px] items-center'>
-
-                      {planetName === item.name ? (
-                        <span className={`p-${item.name.toLowerCase()} w-6 h-6 rounded-full`}></span>
-                      ) : (
-                        <span className={`transparent w-6 h-6 rounded-full border border-[#38384F]`}></span>
-                      )}
-                      <button className=' uppercase text-[15px] font-bold tracking-[1.36px] leading-[1.66]  
-                      py-2] '>{item.name}</button>
+                      <span className={`p-${item.name.toLowerCase()} w-6 h-6 rounded-full`}></span>
+                      <button className=' uppercase text-[15px] font-bold tracking-[1.36px] leading-[1.66] py-2] '>{item.name}</button>
                     </div>
                     <div>
                       <svg

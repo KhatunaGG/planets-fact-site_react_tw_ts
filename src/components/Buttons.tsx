@@ -7,9 +7,8 @@ const Buttons = ({ getOverview, activeBtn, btnName, id, pageName, statuse }: But
     const context = useContext(GlobalState);
     if (!context) return null;
     const { planetName } = context;
-    console.log(btnName.split(' ').reverse().slice(0, 1))
 
-    
+
     return (
         <div
             onClick={() => getOverview(pageName, btnName)}

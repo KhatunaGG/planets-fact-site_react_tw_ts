@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { GlobalState } from "../App";
 import Buttons from "./Buttons";
+import Info from "./Info";
 
 
 
@@ -99,32 +100,16 @@ const Planet = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="planetBtnWrapper flex flex-col justify-center gap-2 mb-[47px] md:flex-row md:gap-[11px] md:justify-between lg:gap-[30px]">
-                        <div className="border border-[#38384F] flex flex-row items-center justify-between px-6 py-[11px] md:flex-col md:w-[25%] ">
-                            <div className="text-[8px] font-bold leading-[2] uppercase text-[#838391] lg:text-[11px] lg:tracking-[1px] lg:leading-[2.27]  ">ROTATION TIME</div>
-                            <div className="flex flex-row items-center justify-center gap-1">
-                                <h2 className="numbers uppercase lg:text-[40px] lg:tracking-[-1.5px] whitespace-nowrap">{item.rotation}</h2>
-                            </div>
-                        </div>
-                        <div className="border border-[#38384F] flex flex-row items-center justify-between px-6 py-[11px] md:flex-col md:w-[25%] ">
-                            <div className="text-[8px] font-bold leading-[2] uppercase text-[#838391] lg:text-[11px] lg:tracking-[1px] lg:leading-[2.27]  ">REVOLUTION TIME</div>
-                            <div className="flex flex-row items-center justify-center gap-1">
-                                <h2 className="numbers uppercase lg:text-[40px] lg:tracking-[-1.5px] whitespace-nowrap">{item.revolution}</h2>
-                            </div>
-                        </div>
-                        <div className="border border-[#38384F] flex flex-row items-center justify-between px-6 py-[11px] md:flex-col md:w-[25%] ">
-                            <div className="text-[8px] font-bold leading-[2] uppercase text-[#838391] lg:text-[11px] lg:tracking-[1px] lg:leading-[2.27]  ">radius</div>
-                            <div className="flex flex-row items-center justify-center gap-1">
-                                <h2 className="numbers uppercase lg:text-[40px] lg:tracking-[-1.5px] whitespace-nowrap">{item.radius}</h2>
-                            </div>
-                        </div>
-                        <div className="border border-[#38384F] flex flex-row items-center justify-between px-6 py-[11px] md:flex-col md:w-[25%] ">
-                            <div className="text-[8px] font-bold leading-[2] uppercase text-[#838391] lg:text-[11px] lg:tracking-[1px] lg:leading-[2.27]  ">AVERAGE TEMP.</div>
-                            <div className="flex flex-row items-center justify-center gap-1">
-                                <h2 className="numbers uppercase lg:text-[40px] lg:tracking-[-1.5px] whitespace-nowrap">{item.temperature}</h2>
-                            </div>
-                        </div>
-                    </div>
+                    <Info
+                        rotation={item.rotation}
+                        revolution={item.revolution}
+                        radius={item.radius}
+                        temperature={item.temperature}
+                        title1='ROTATION TIME'
+                        title2='REVOLUTION TIME'
+                        title3='radius'
+                        title4='AVERAGE TEMP.'
+                    />
                 </div>
             ))}
         </>

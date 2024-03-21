@@ -39,6 +39,17 @@ export type ButtonsProps = {
     activeBtn: string;
     btnName: string;
     id: number;
-
     statuse?: string;
 }
+
+export type InfoPropsType = {
+    rotation: string;
+    revolution: string;
+    radius: string;
+    temperature: string;
+    title1: string; 
+    title2: string;
+    title3: string;
+    title4: string;
+}
+
