@@ -2,8 +2,13 @@ import { useContext } from "react";
 import { GlobalState } from "../App";
 import Buttons from "./Buttons";
 import Info from "./Info";
+import {motion} from 'framer-motion'
 
 
+const variants = {
+    initial: {opacity: 0, x: 300, scale: 0.5},
+    animate: {opacity: 1, x: 0, scale: 1, transition: {duration: 2}}
+}
 
 
 const Planet = () => {
@@ -37,7 +42,13 @@ const Planet = () => {
                     </div>
 
                     <div className="block-up flex flex-col items-center justify-center lg:flex-row  lg:justify-between">
-                        <div className="img-wrapper  pt-[95px] pb-[98px] lg:flex lg:items-center lg:justify-center lg:w-[50%] ">
+                        <motion.div
+                            variants={variants} animate='animate' initial='initial'
+                        // initial={{opacity: 0, x: 300, scale: 0.5}}
+                        // animate={{opacity: 1, x: 0, scale: 1}}
+                        // transition={{duration: 2}}
+                        
+                        className="img-wrapper  pt-[95px] pb-[98px] lg:flex lg:items-center lg:justify-center lg:w-[50%] ">
                             {activeBtn === 'OVERVIEW' ? (
                                 <img className="w-[111px] h-[111px] lg:w-[290px] lg:h-[290px]" src={item.images.planet} alt="" />
                             ) : activeBtn === 'INTERNAL STRUCTURE' || activeBtn === 'STRUCTURE' ? (
@@ -47,12 +58,11 @@ const Planet = () => {
                                     <img className="w-[111px] h-[111px] lg:w-[290px] lg:h-[290px]" src={item.images.planet} alt="" />
                                     <img className="top-[36%] legt-[2%] absolute z-10 lg:top-[65%] lg:left-[22%] lg:w-[163px] lg:h-[198x]" src={item.images.geology} alt="" />
                                 </div>
-
                             ) : (
                                 <img className="w-[111px] h-[111px] lg:w-[290px] lg:h-[290px]" src={item.images.planet} alt="" />
                             )
                             }
-                        </div>
+                        </motion.div>
                         <div className="PlanetBtn md:flex md:flex-row md:items-center md:justify-between md:gap-[69px] lg:flex-col lg:gap-[39px]">
                             <div className="planetText text-center md:w-[50%] md:text-left lg:w-[350px]">
                                 <h1 className="uppercase text-[40px] mb-4 lg:text-[80px]">{item.name}</h1>
@@ -66,8 +76,6 @@ const Planet = () => {
 
                                 <div className="mt-[45px] text-[#838391] flex flex-row items-center justify-center gap-1 md:justify-start md:mt-8 lg:mt-[24px]">
                                     <span className="text-sm leading-[2.08] font-thin mt-[2px]">Source:</span>
-                                    {/* <a className="text-xs leading-[2.08] font-bold underline" href={item.overview.source} target="_blank"> Wikipedia</a> */}
-
                                     <a className="text-xs leading-[2.08] font-bold underline" target="_blank"
                                         href={activeBtn === 'OVERVIEW' ? item.overview.source
                                             : activeBtn === 'INTERNAL STRUCTURE' || activeBtn === 'STRUCTURE' ? item.structure.source

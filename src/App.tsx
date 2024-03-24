@@ -43,7 +43,6 @@ function App() {
   const [sideBar, setSideBar] = useState(false)
   
 
- console.log(planetName)
 
 
   const getName = (name: string) => {
