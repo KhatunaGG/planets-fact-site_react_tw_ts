@@ -8,7 +8,6 @@ const Buttons = ({ getOverview, activeBtn, btnName, id, pageName, statuse }: But
     if (!context) return null;
     const { planetName } = context;
 
-
     return (
         <div
             onClick={() => getOverview(pageName, btnName)}

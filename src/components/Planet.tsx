@@ -11,13 +11,25 @@ const variants = {
 }
 
 
+const textVariants = {
+    initial: {opacity: 0, x: 500},
+    animate: {opacity: 1, x: 0, transition: {duration: 2}}
+}
+
+
+const titleVariants = {
+    initial: {opacity: 0, scale: 0},
+    animate: {opacity: 1, scale: 1, transition: {duration: 2}}
+}
+
+
+
 const Planet = () => {
     const context = useContext(GlobalState);
     if (!context) return null;
     const { data, planetName, getOverview, activeBtn, btnsData } = context;
 
     const newData = data.filter((item) => item.name === planetName)
-
 
 
 
@@ -40,14 +52,9 @@ const Planet = () => {
                             );
                         })}
                     </div>
-
                     <div className="block-up flex flex-col items-center justify-center lg:flex-row  lg:justify-between">
                         <motion.div
                             variants={variants} animate='animate' initial='initial'
-                        // initial={{opacity: 0, x: 300, scale: 0.5}}
-                        // animate={{opacity: 1, x: 0, scale: 1}}
-                        // transition={{duration: 2}}
-                        
                         className="img-wrapper  pt-[95px] pb-[98px] lg:flex lg:items-center lg:justify-center lg:w-[50%] ">
                             {activeBtn === 'OVERVIEW' ? (
                                 <img className="w-[111px] h-[111px] lg:w-[290px] lg:h-[290px]" src={item.images.planet} alt="" />
@@ -65,14 +72,18 @@ const Planet = () => {
                         </motion.div>
                         <div className="PlanetBtn md:flex md:flex-row md:items-center md:justify-between md:gap-[69px] lg:flex-col lg:gap-[39px]">
                             <div className="planetText text-center md:w-[50%] md:text-left lg:w-[350px]">
-                                <h1 className="uppercase text-[40px] mb-4 lg:text-[80px]">{item.name}</h1>
+                                <motion.h1 
+                                variants={titleVariants} animate='animate' initial='initial'
+                                className="uppercase text-[40px] mb-4 lg:text-[80px]">{item.name}</motion.h1>
 
-                                <p className="text-[12px] lg:text-sm ">
+                                <motion.p 
+                                variants={textVariants} animate='animate' initial='initial'
+                                className="text-[12px] lg:text-sm ">
                                     {activeBtn === 'OVERVIEW' ? item.overview.content
                                         : activeBtn === 'INTERNAL STRUCTURE' || activeBtn === 'STRUCTURE' ? item.structure.content
                                             : activeBtn === 'SURFACE GEOLOGY' || activeBtn === 'GEOLOGY' ? item.geology.content
                                                 : item.overview.content}
-                                </p>
+                                </motion.p>
 
                                 <div className="mt-[45px] text-[#838391] flex flex-row items-center justify-center gap-1 md:justify-start md:mt-8 lg:mt-[24px]">
                                     <span className="text-sm leading-[2.08] font-thin mt-[2px]">Source:</span>
@@ -82,7 +93,6 @@ const Planet = () => {
                                                 : activeBtn === 'SURFACE GEOLOGY' || activeBtn === 'GEOLOGY' ? item.geology.source
                                                     : item.overview.source}
                                     >Wikipedia</a>
-
                                     <svg className="mb-[4px]" width="12" height="12"><path fill="#FFF" d="M11.34.66C10.9.22 10.37 0 9.75 0h-7.5C1.63 0 
                                     1.1.22.66.66.22 1.1 0 1.63 0 2.25v7.5c0 .62.22 1.15.66 1.59.44.44.97.66 1.59.66h7.5c.62 0 1.15-.22 
                                     1.59-.66.44-.44.66-.97.66-1.59v-7.5c0-.62-.22-1.15-.66-1.59zM10 6.25a.467.467 0 01-.305.46.544.544 
@@ -91,7 +101,6 @@ const Planet = () => {
                                     0 .253.05.352.148A.48.48 0 0110 2.5v3.75z" opacity=".5" /></svg>
                                 </div>
                             </div>
-
                             <div className="hidden md:flex md:flex-col md:items-center md:justify-between md:gap-4 md:w-[50%] lg:w-[350px]">
                                 {btnsData.map((btn, i) => {
                                     return (

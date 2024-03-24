@@ -28,9 +28,6 @@ type GlobalStateType = {
   setSideBar: (value: boolean) => void;
   sideBar: boolean;
   toggleSidebar: () => void;
-
-
- 
 }
 
 export const GlobalState = createContext<GlobalStateType | null>(null);
@@ -41,14 +38,14 @@ function App() {
   const [overview, setOverview] = useState(false)
   const [activeBtn, setActiveBtn] = useState('')
   const [sideBar, setSideBar] = useState(false)
-  
+
 
 
 
   const getName = (name: string) => {
     setPlanetName(name)
     setSideBar(!sideBar)
-    
+
   }
 
 
@@ -101,9 +98,6 @@ function App() {
         setSideBar,
         sideBar,
         toggleSidebar,
-
-
-       
       }}>
         <RouterProvider router={router}></RouterProvider>
       </GlobalState.Provider>

@@ -142,13 +142,10 @@ const Root = () => {
 
   return (
     <div>
-
       <div className="header relative w-full border-b border-[#38384F] lg:flex lg:flex-row lg:justify-between lg:items-center" >
         <div className='flex flex-row justify-between items-center px-6 py-4 lg:pt-4 lg:pl-8 lg:pr-10'>
           <Link to={'/'}>
-
             <h2 className='uppercase text-[28px] tracking-[-1.05px] md:w-full md:text-center md:pb-[25px] lg:pb-0'>The Planets</h2>
-
           </Link>
 
           <div
@@ -175,7 +172,6 @@ const Root = () => {
             </Link>
           ))}
         </div>
-
 
         {sideBar && (
           <motion.div
